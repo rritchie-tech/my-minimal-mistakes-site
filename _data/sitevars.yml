@@ -1,0 +1,36 @@
+######################################
+# --- Colours / background image --- #
+######################################
+
+# Personalize the colours in your website. Colour values can be any valid CSS colour
+body-col: "#00008B"
+body-font: "Arial, Helvetica, sans-serif;"
+main-col: "#00008B"
+page-col: "#000080"
+text-col: "#404040"
+link-col: "green" #"#008AFF"
+hover-col: "orange" #"#0085A1"
+navbar-col: "#1E90FF" #Dodger Blue
+logo-text-col: "#1E90FF"
+logo-text-comment: "Dodger Blue (from _config.yml file"
+navbar-btn-col: "red" #rgba(0,0,0,0.2)
+navbar-btn-col: "rgba(0,0,0,0.2)"
+navbar-btn-comment: "Shadow (from _config.yml file)"
+navbar-text-col: white
+navbar-border-col: "#DDDDDD"
+footer-col: "#800020"
+footer-text-col: "#777777"
+footer-link-col: "#404040"
+footer-hover-col: "#0085A1"
+rick-h5-col: "white"
+rick-h5-comment: "(from _config.yml file)"
+rick-h4-col: "white"
+rick-h4-comment: "(from _config.yml file)"
+rick-h3-col: "white"
+rick-h3-comment: "(from _config.yml file)"
+rick-h2-col: "white"
+rick-h2-comment: "(from _config.yml file)"
+rick-h1-col: "white"
+rick-h1-comment: "(from _config.yml file)"
+rick-p-col: "white"
+rick-p-comment: "(from _config.yml file)"

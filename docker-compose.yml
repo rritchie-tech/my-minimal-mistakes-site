@@ -1,0 +1,9 @@
+services:
+  jekyll:
+    build: .
+    volumes:
+      - .:/srv/jekyll
+      - ./_data:/srv/jekyll/_data
+    ports:
+      - "4000:4000"
+    command: bundle exec jekyll serve --watch --force_polling --host 0.0.0.0 --incremental

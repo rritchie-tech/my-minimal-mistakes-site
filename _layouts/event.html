@@ -1,0 +1,126 @@
+---
+layout: listing
+---
+<DIV>EVENT LOADED</DIV>
+{{ content }}
+<script>
+const API_KEY = 'AIzaSyDq8e5VgcBaFrJJ83iHPvoNI0D_IJO-PWs';            // public API key (restrict it in Google Cloud)
+const CALENDAR_ID = 'waidner@redeemer-lutheran.net';    // e.g. your-email%40gmail.com or public calendar id
+
+
+let allEvents = [];
+const pageSize = 8;
+let currentPage = 0;
+
+// ----- Date helpers -----
+function getLastSundayStart() {
+  const now = new Date();
+  const lastSunday = new Date(now);
+  lastSunday.setDate(now.getDate() - now.getDay());
+  lastSunday.setHours(0,0,0,0);
+  return lastSunday.toISOString();
+}
+
+function getEndOfNextSunday() {
+  const now = new Date();
+  const lastSunday = new Date(now);
+  lastSunday.setDate(now.getDate() - now.getDay());
+  const nextSunday = new Date(lastSunday);
+  nextSunday.setDate(lastSunday.getDate() + 7);
+  nextSunday.setHours(23,59,59,999);
+  return nextSunday.toISOString();
+}
+
+// ----- Fetch events -----
+async function loadEvents() {
+  const timeMin = getLastSundayStart();
+  const timeMax = getEndOfNextSunday();
+
+  const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}` +
+              `/events?key=${API_KEY}` +
+              `&timeMin=${timeMin}` +
+              `&timeMax=${timeMax}` +
+              `&singleEvents=true&orderBy=startTime`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    allEvents = data.items || [];
+    currentPage = 0;
+    renderPage(currentPage);
+  } catch (err) {
+    document.getElementById("event-list").innerHTML = "<p>Error loading events.</p>";
+    console.error(err);
+  }
+}
+
+// ----- Format event date -----
+function formatEventDate(ev) {
+  if(ev.start.dateTime){
+    // Timed event
+    return new Date(ev.start.dateTime).toLocaleString(undefined, { 
+      weekday:"short", month:"short", day:"numeric", hour:"numeric", minute:"2-digit"
+    });
+  } else if(ev.start.date){
+    // All-day event → force local midnight
+    const d = new Date(ev.start.date + "T00:00");
+    return d.toLocaleDateString(undefined, { 
+      weekday:"short", month:"short", day:"numeric"
+    });
+  }
+  return "";
+}
+
+// ----- Render page -----
+function renderPage(page) {
+  const list = document.getElementById("event-list");
+  const start = page * pageSize;
+  const end = start + pageSize;
+  const pageEvents = allEvents.slice(start, end);
+
+  list.innerHTML = "";
+
+  if(pageEvents.length === 0){
+    list.innerHTML = "<p>No events found.</p>";
+  } else {
+    pageEvents.forEach(ev => {
+      const eventDate = ev.start.dateTime ? new Date(ev.start.dateTime) : new Date(ev.start.date + "T00:00");
+      const dayOfWeek = eventDate.getDay();
+      const bgColor = dayOfWeek === 0 ? "#ffffff" : "#f0f0f0"; // Sunday = white, others light gray
+
+      const div = document.createElement("div");
+      div.className = "event-card";
+      div.style.backgroundColor = bgColor;
+
+      div.innerHTML = `
+        <div class="event-title">${ev.summary || "Untitled Event"}</div>
+        <div class="event-date">${formatEventDate(ev)}</div>
+      `;
+      list.appendChild(div);
+    });
+  }
+
+  currentPage = page;
+  updateButtons();
+}
+
+// ----- Update pagination buttons -----
+function updateButtons() {
+  document.getElementById("prevBtn").disabled = currentPage === 0;
+  document.getElementById("nextBtn").disabled = (currentPage + 1) * pageSize >= allEvents.length;
+  const totalPages = Math.max(1, Math.ceil(allEvents.length / pageSize));
+  document.getElementById("pageIndicator").textContent = `Page ${currentPage + 1} of ${totalPages}`;
+}
+
+// ----- Button events -----
+document.getElementById("prevBtn").addEventListener("click", () => {
+  if(currentPage > 0) renderPage(currentPage - 1);
+});
+document.getElementById("nextBtn").addEventListener("click", () => {
+  if((currentPage + 1) * pageSize < allEvents.length) renderPage(currentPage + 1);
+});
+
+// ----- Start fetching -----
+loadEvents();
+</script>
+<DIV>EVENT ENDED</DIV>

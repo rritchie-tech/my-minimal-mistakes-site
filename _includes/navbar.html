@@ -1,0 +1,77 @@
+{% comment %}
+    List directories which are in the current directory.
+    
+    The logic is: after removing the **common** part of the item's path,
+    we use an item if goes exactly **one** level down i.e. direct descendants.
+    Unfortunately Jekyll doesn't have a concept of directories, just pages in site.pages,
+    so here we use the presence of index.md to indicate that is the index of a directory.
+    This also makes sense to use this approach because Jekyll needs to actually have an HTML page
+    to reference as the directory menu.
+    Just make sure you have index.md in each directory and that it uses the listing layout.
+	
+{% endcomment %}
+		<div id="stuck-container">
+			<div id="site-navbar"><!-- This failed to act as "sticky" when I had it placed inside/below nav-container elements. -->
+			{% comment %}
+				Outer loop here is to sort the larger categories.
+			{% endcomment %}
+				<div id="dropdown-Home">
+					<button class="dropbtn-Home">
+						<a href="../index.html"><img src="/assets/img/RedeemerSquare_small.gif"></img></a>
+						<i class="fa fa-caret-down"></i>Home
+					</button>
+					<i class="fa fa-caret-down"></i>
+				</div>
+			{% assign myArray = "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20" | split: ',' %}
+			{% for dig in myArray %}
+				{% for item in site.pages %}
+					{% if {{item.level}} == 1 %}
+						{% capture item_order %}{{ item.order }}{% endcapture %}
+						{% if item_order == dig %}
+				<!-- dropdown {{ item.title }} open -->
+				<div class="dropdown">
+					<button class="dropbtn">{{- item.title | strip -}}
+					  <i class="fa fa-caret-down"></i>
+					</button>
+					<div class="dropdown-content">
+						{% for item2 in site.pages %}
+							{% if {{item2.level}} == 2 %}
+								{% if item2.parent == item.title %}
+									{% if page.level == 1 %}
+						<a href="/level2/{{- item2.thisurl | strip -}}">{{-item2.title | strip -}}</a>
+									{% else if page.level == 2 %}
+						<a href="../{{- item2.thisurl | strip -}}">{{-item2.title | strip -}}</a>			
+									{% endif %}
+								{% endif %}
+							{% endif %}
+						{% endfor %}	
+					</div>	
+				</div>
+				<!-- dropdown {{ item.title }} closed -->
+					{% else %}					
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+				<div id="site-under-navbar">
+						<p> &nbsp; </p>
+				</div>
+			</div>
+			<!-- site-navbar closing -->
+			<div id="nav-container">
+				<div id="left-container">
+					<div id="nav-left-1">
+						<a href="/index.html"><img id="lamb" src="/assets/img/parament_lamb.gif"></img></a>
+					</div>
+					<div id="Redeemer">
+					REDEEMER
+					</div>
+					<div id="nav-left-2">
+						<a href="index.html">
+						LUTHERAN CHURCH<BR>
+						of HUNTINGTON BEACH
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- nav-container closing -->

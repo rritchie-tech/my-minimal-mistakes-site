@@ -34,4 +34,3 @@ ENV MODE=${MODE}
 
 # Run entrypoint
 ENTRYPOINT ["/srv/jekyll/entrypoint.sh"]
-

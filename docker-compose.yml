@@ -1,14 +1,27 @@
-version: '3.8'
+name: Build and Deploy Jekyll
 
-services:
-  jekyll:
-    build:
-      context: .
-      args:
-        MODE: dev
-    volumes:
-      - .:/srv/jekyll
-    ports:
-      - "4000:4000"
-    environment:
-      - MODE=dev
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Jekyll
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+      - name: Install dependencies
+        run: |
+          gem install bundler jekyll
+          bundle install
+      - name: Build site
+        run: bundle exec jekyll build
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v6
+        with:
+          github_token: ${{ secrets.JOULUPUKKI }}
+          publish_dir: ./_site

@@ -115,8 +115,8 @@
 
   
 		<meta property="og:type" content="website">
-		<meta property="og:url" content="/">
-		<link rel="canonical" href="/">
+		<meta property="og:url" content="/level1/educationL1/">
+		<link rel="canonical" href="/level1/educationL1/">
   
 
   
@@ -4807,286 +4807,135 @@ thisurl: titlestuff.html
 ---
 <div class="titlestuff ">
 	
+					<div class="container-md">
+						<div class="level-1-heading">
+							<h1>Education</h1>
+						
+							
+							<h2 class="subheading">clear witness + caring service</h2>
+							
+						
+						  
+						
+						</div>
+					</div>
+	
 	
 				</div><div class="intro-header"></div>
 
 <main class=" container-md ">
   
 
-  <p>Base URL: </p>
-<div id="calendar-widget">
-  <div id="event-list"></div>
+  <p class="box-success">This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to <a href="https://markdowntutorial.com/">take 5 minutes to learn how to write in markdown</a> - it’ll teach you how to transform regular text into bold/italics/tables/etc.<br />I also encourage you to look at the <a href="https://raw.githubusercontent.com/daattali/beautiful-jekyll/master/_posts/2020-02-28-sample-markdown.md">code that created this post</a> to learn some more advanced tips about using markdown in Beautiful Jekyll.</p>
 
-  <div id="pagination">
-    <button id="prevBtn" disabled="">&lt;&lt; Previous</button>
-    <span id="pageIndicator"></span>
-    <button id="nextBtn" disabled="">Next &gt;&gt;</button>
-  </div>
-</div>
-<script>
-// ====== CONFIG ======
-const API_KEY = 'AIzaSyDq8e5VgcBaFrJJ83iHPvoNI0D_IJO-PWs';
-const CALENDAR_ID = 'waidner@redeemer-lutheran.net';
-const pageSize = 8;
+<p><strong>Here is some bold text</strong></p>
 
-let allEvents = [];
-let currentPage = 0;
+<h2 id="here-is-a-secondary-heading">Here is a secondary heading</h2>
 
-// ====== WEEK RANGE ======
-async function loadEvents() {
-  const now = new Date();
+<p><a href="https://deanattali.com/">This is a link to a different site</a> and <a href="#local-urls">this is a link to a section inside this page</a>.</p>
 
-  const lastSunday = new Date(now);
-  lastSunday.setDate(now.getDate() - now.getDay());
-  lastSunday.setHours(0,0,0,0);
+<p>Here’s a table:</p>
 
-  const nextSunday = new Date(lastSunday);
-  nextSunday.setDate(lastSunday.getDate() + 7);
-  nextSunday.setHours(23,59,59,999);
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Number</th>
+      <th style="text-align: left">Next number</th>
+      <th style="text-align: left">Previous number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Five</td>
+      <td style="text-align: left">Six</td>
+      <td style="text-align: left">Four</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Ten</td>
+      <td style="text-align: left">Eleven</td>
+      <td style="text-align: left">Nine</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Seven</td>
+      <td style="text-align: left">Eight</td>
+      <td style="text-align: left">Six</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Two</td>
+      <td style="text-align: left">Three</td>
+      <td style="text-align: left">One</td>
+    </tr>
+  </tbody>
+</table>
 
-  const timeMin = lastSunday.toISOString();
-  const timeMax = nextSunday.toISOString();
+<p>You can use <a href="https://www.mathjax.org/">MathJax</a> to write LaTeX expressions. For example:
+When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are \(x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\)</p>
 
-  const url =
-    `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events` +
-    `?key=${API_KEY}&timeMin=${timeMin}&timeMax=${timeMax}` +
-    `&singleEvents=true&orderBy=startTime`;
+<p>How about a yummy crepe?</p>
 
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
+<p><img src="https://beautifuljekyll.com/assets/img/crepe.jpg" alt="Crepe" /></p>
 
-    allEvents = data.items || [];
-    currentPage = 0;
-    renderPage(currentPage);
+<p>It can also be centered!</p>
 
-  } catch (err) {
-    document.getElementById("event-list").innerHTML = "<p>Error loading events.</p>";
-    console.error(err);
-  }
+<p><img src="https://beautifuljekyll.com/assets/img/crepe.jpg" alt="Crepe" class="mx-auto d-block" /></p>
+
+<p>Here’s a code chunk:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var foo = function(x) {
+  return(x + 5);
 }
+foo(3)
+</code></pre></div></div>
 
-// ====== FORMAT TIME ======
-function formatEventTime(ev) {
-  if (ev.start.dateTime) {
-    const d = new Date(ev.start.dateTime);
-    return d.toLocaleTimeString(undefined, { hour:"numeric", minute:"2-digit" });
-  }
-  return "All day";
-}
+<p>And here is the same code with syntax highlighting:</p>
 
-// ====== GROUP BY DATE ======
-function groupEventsByDate(events) {
-  const groups = {};
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span><span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nf">foo</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
 
-  events.forEach(ev => {
-    let key;
+<p>And here is the same code yet again but with line numbers:</p>
 
-    if (ev.start.date) {
-      // All-day event — use Google's date directly
-      key = ev.start.date;
-    } else {
-      // Timed event — convert to local date only
-      const d = new Date(ev.start.dateTime);
-      key = d.toLocaleDateString("en-CA"); // YYYY-MM-DD in local time
-    }
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span><span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nf">foo</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></figure>
 
-    if (!groups[key]) groups[key] = [];
-    groups[key].push(ev);
-  });
+<h2 id="boxes">Boxes</h2>
+<p>You can add notification, warning and error boxes like this:</p>
 
-  // Sort keys
-  const sorted = {};
-  Object.keys(groups)
-    .sort()
-    .forEach(k => sorted[k] = groups[k]);
+<h3 id="notification">Notification</h3>
 
-  return sorted;
-}
+<p class="box-note"><strong>Note:</strong> This is a notification box.</p>
 
+<h3 id="warning">Warning</h3>
 
-// ====== FLATTEN FOR PAGING ======
-function flattenGroupedEvents(grouped) {
-  const flat = [];
-  for (const dateStr in grouped) {
-    grouped[dateStr].forEach(ev => flat.push({ dateStr, ev }));
-  }
-  return flat;
-}
+<p class="box-warning"><strong>Warning:</strong> This is a warning box.</p>
 
-// ====== RENDER PAGE ======
-function renderPage(page) {
-  const list = document.getElementById("event-list");
-  list.innerHTML = "";
+<h3 id="error">Error</h3>
 
-  const grouped = groupEventsByDate(allEvents);
-  const flat     = flattenGroupedEvents(grouped);
+<p class="box-error"><strong>Error:</strong> This is an error box.</p>
 
-  const start = page * pageSize;
-  const end   = start + pageSize;
-  const items = flat.slice(start, end);
+<h2 id="local-urls">Local URLs in project sites</h2>
 
-  if (items.length === 0) {
-    list.innerHTML = "<p>No events found.</p>";
-    return;
-  }
+<p>When hosting a <em>project site</em> on GitHub Pages (for example, <code class="language-plaintext highlighter-rouge">https://USERNAME.github.io/MyProject</code>), URLs that begin with <code class="language-plaintext highlighter-rouge">/</code> and refer to local files may not work correctly due to how the root URL (<code class="language-plaintext highlighter-rouge">/</code>) is interpreted by GitHub Pages. You can read more about it <a href="https://beautifuljekyll.com/faq/#links-in-project-page">in the FAQ</a>. To demonstrate the issue, the following local image will be broken <strong>if your site is a project site:</strong></p>
 
-  let currentDay = null;
+<p><img src="/assets/img/crepe.jpg" alt="Crepe" /></p>
 
-  items.forEach(item => {
+<p>If the above image is broken, then you’ll need to follow the instructions <a href="https://beautifuljekyll.com/faq/#links-in-project-page">in the FAQ</a>. Here is proof that it can be fixed:</p>
 
-    // item.dateStr is already YYYY-MM-DD
-    const dateObj = new Date(item.dateStr + "T00:00:00");
+<p><img src="/assets/img/crepe.jpg" alt="Crepe" /></p>
 
-    const dayOfWeek = dateObj.getDay();  // 0 = Sunday
-
-	let bgcolor;
-	if (dateObj.getDay() == 0) {
-		bgColor = "#ffffff";
-	} else {
-		bgColor = "#dadbdd";
-	}
-    // add heading when the date changes
-	
-	
-	
-	
-	if (currentDay !== item.dateStr) {
-		currentDay = item.dateStr;
-
-		const heading = document.createElement("div");
-		heading.className = "day-heading";
-		heading.style.backgroundColor = bgColor;
-
-		heading.textContent = dateObj.toLocaleDateString(undefined, {
-			weekday: "long",
-			month: "short",
-			day: "numeric"
-	});
-
-  list.appendChild(heading);
-}
-	
-    if (currentDay !== item.dateStr) {
-      currentDay = item.dateStr;
-
-      const heading = document.createElement("h3");
-      heading.className = "day-heading";
-      heading.textContent = dateObj.toLocaleDateString(undefined, {
-        weekday: "long",
-        month:   "short",
-        day:     "numeric"
-      });
-      list.appendChild(heading);
-    }
-
-    // event card
-    const div = document.createElement("div");
-    div.className = "event-card";
-    div.style.backgroundColor = bgColor;
-
-    const timeStr = formatEventTime(item.ev);
-
-    div.innerHTML = `
-      
-      <div class="event-time">${timeStr}</div>
-	  <div class="event-title">${item.ev.summary || "Untitled Event"}</div>
-    `;
-
-    list.appendChild(div);
-  });
-
-  currentPage = page;
-  updateButtons(flat.length);
-}
-
-// ====== BUTTON STATE ======
-function updateButtons(total) {
-  const totalPages = Math.ceil(total / pageSize);
-  document.getElementById("prevBtn").disabled = currentPage === 0;
-  document.getElementById("nextBtn").disabled = currentPage >= totalPages - 1;
-  document.getElementById("pageIndicator").textContent =
-    `Page ${currentPage + 1} of ${totalPages}`;
-}
-
-// ====== BUTTON EVENTS ======
-document.getElementById("prevBtn").addEventListener("click", () => {
-  if (currentPage > 0) renderPage(currentPage - 1);
-});
-document.getElementById("nextBtn").addEventListener("click", () => {
-  renderPage(currentPage + 1);
-});
-
-// ====== START ======
-loadEvents();
-</script>
-
-
-
-
-
-<!-- role="list" needed so that `list-style: none` in Safari doesn't remove the list semantics -->
-<ul class="posts-list list-unstyled" role="list">
-  
-  <li class="post-preview">
-    <article>
-      
-
-      
-
-      <a href="/sample-markdown/">
-        <h2 class="post-title">Sample blog post to learn markdown tips</h2>
-
-        
-          <h3 class="post-subtitle">
-          There's lots to learn!
-          </h3>
-        
-      </a>
-
-      
-        <span>By <strong>Bill Smith</strong></span>
-      
-      <p class="post-meta">
-        
-        Posted on February 28, 2020
-      </p>
-
-      
-
-      
-      
-
-      <div class="post-entry">
-        
-        This is a demo post to show you how to write blog posts with markdown. I strongly encourage you to take 5 minutes to learn how to write in markdown - it’ll teach you how to transform regular text into bold/italics/tables/etc.I also encourage you to look at the code that...
-        
-        
-          <a href="/sample-markdown/" class="post-read-more">[Read&nbsp;More]</a>
-        
-      </div>
-      
-
-      
-      <div class="blog-tags">
-        <span>Tags:</span>
-        <!-- role="list" needed so that `list-style: none` in Safari doesn't remove the list semantics -->
-        <ul class="d-inline list-inline" role="list">
-          
-          <li class="list-inline-item">
-            <a href="/tags#test">test</a>
-          </li>
-          
-        </ul>
-      </div>
-      
-
-    </article>
-  </li>
-  
-</ul>
-
-
+<details>
+  <summary>Click here!</summary>
+  <p>Here you can see an <strong>expandable</strong> section</p>
+</details>
 
 
   

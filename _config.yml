@@ -26,6 +26,10 @@ description              : "An amazing website."
 url                      : "http://localhost:4000"
 baseurl                  : ""
 repository               : "https://rritchie-tech.github.io/minimal-mistakes/"
+# Override for production
+production:
+  url                    : "https://rritchie-tech.github.io"
+  baseurl                : "/my-minimal-mistakes-site"
 
 # Site Settings
 locale                   : "en-US"

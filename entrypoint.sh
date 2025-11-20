@@ -3,11 +3,16 @@ set -e
 
 if [ "$MODE" = "dev" ]; then
   echo "Starting Jekyll in development mode..."
-  exec bundle exec jekyll serve --host 0.0.0.0 --port 4000 --watch
+  exec bundle exec jekyll serve \
+    --host 0.0.0.0 \
+    --port 4000 \
+    --watch \
+    --force_polling \
+    --livereload
 else
   echo "Building and deploying Jekyll site..."
 
-  bundle exec jekyll build --destination /srv/jekyll/_site
+  bundle exec jekyll build -config _config.yml,_config_prod.yml --destination /srv/jekyll/_site
 
   # Configure git for GitHub Actions
   git config --global user.name "GitHub Actions"

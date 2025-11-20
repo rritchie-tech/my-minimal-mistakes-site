@@ -67,29 +67,15 @@
 	  {% endif %}
     {% endfor %}
   {% endif %}
-  {% if site.level-css %}
-    {% for css in site.level-css %}
-		<link rel="stylesheet" href="{{ css | relative_url }}">
-	{% endfor %}
-  {% endif %}
-  {% if site.navbar-css %}
-    {% for css in site.navbar-css %}
-		<link rel="stylesheet" href="{{ css | relative_url }}">
-    {% endfor %}
+  {% if site.other-css %}
+      {% for css in site.other-css %}
+          <link rel="stylesheet" href="{{ css | relative_url }}">
+      {% endfor %}
   {% endif %}
   {% if site.homebutton-js %}
     {% for js in site.homebutton-js %}
 		<script src="{{ js | relative_url }}"></script>
     {% endfor %}
-  {% endif %}
-  {% if site.site-css %}
-    {% for css in site.site-css %}
-		<p>css line from head.html</p>
-		<link rel="stylesheet" href="{{ css | relative_url }}">
-		</p>end line</p>
-	{% endfor %}
-  {% else %}
-		<link rel="stylesheet" href="/assets/css/custom-styles.css">
   {% endif %}
   {% if page.ext-css %}
     {% for css in page.ext-css %}
@@ -148,7 +134,7 @@
   {% include matomo.html %}
 
   {% if page.comments and site.staticman.repository and site.staticman.branch %}
-		<link rel="stylesheet" href="{{ "{{ site.baseurl }}/assets/css/staticman.css" | relative_url }}">
+		<link rel="stylesheet" href="{{ "{{ site.url }}/{{ site.baseurl }}/assets/css/staticman.css" | relative_url }}">
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
   {% endif %}
 
@@ -163,5 +149,5 @@
     {% endfor %}
   {% endif %}
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Montserrat:wght@700&family=Nunito+Sans:wght@400&display=swap" rel="stylesheet">
-		<link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+		<link rel="icon" type="image/x-icon" href="{{ site.url }}/{{ site.baseurl }}/assets/img/favicon.ico">
 	</head>

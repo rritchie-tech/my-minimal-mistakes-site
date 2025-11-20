@@ -8,3 +8,8 @@ CHANGELOG.md                    text merge=union
 docs/_docs/18-history.md        text merge=union
 
 *.md                            text
+
+# --- Added rules ---
+# Ensure all shell scripts always use LF line endings (fix Windows CRLF issues)
+*.sh                            text eol=lf
+

@@ -5,7 +5,7 @@
   font-family: var(--header-font);
   
     <DIV>YES THERE IS AN IMAGE</DIV>
-    background-image: url(/assets/images/RedeemerSquare.png);
+    background-image: url(/my-minimal-mistakes-site/assets/images/RedeemerSquare.png);
     background-attachment: fixed;
   
   -webkit-transition: padding .5s ease-in-out;

@@ -8,29 +8,22 @@ RUN apt-get update && apt-get install -y \
     git \
  && rm -rf /var/lib/apt/lists/*
 
-# Install Jekyll & Bundler
 RUN gem install jekyll bundler
 
-# Set working directory
 WORKDIR /srv/jekyll
 
 # Copy dependency files
 COPY package.json ./
 COPY Gemfile Gemfile.lock minimal-mistakes-jekyll.gemspec ./
 
-# Install gems
 RUN bundle install
 
-# Copy the rest of the site files
+# Copy all repo files
 COPY . .
 
-# Copy the entrypoint script
-COPY entrypoint.sh /srv/jekyll/entrypoint.sh
-RUN chmod +x /srv/jekyll/entrypoint.sh
+# Build arg passed from docker or GitHub Actions
+ARG MODE=deploy
+ENV MODE=$MODE
 
-# Build argument to toggle dev/deploy
-ARG MODE=dev
-ENV MODE=${MODE}
-
-# Run entrypoint
-ENTRYPOINT ["/srv/jekyll/entrypoint.sh"]
+# Run script
+CMD ["/srv/jekyll/entrypoint.sh"]

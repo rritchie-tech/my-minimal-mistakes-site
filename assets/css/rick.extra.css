@@ -1,0 +1,5 @@
+ .intro-header .page-heading h1 {
+	color: red;
+    font-size: 2rem;
+	/* THIS IS WHERE YOU SET THE COLOR OF THE HEADING */ 
+  }

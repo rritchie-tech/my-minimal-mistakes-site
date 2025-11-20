@@ -1,0 +1,14 @@
+services:
+  jekyll:
+    build:
+      context: .
+      args:
+        MODE: dev       # dev mode: live reload
+    container_name: jekyll-dev
+    ports:
+      - "4000:4000"    # Jekyll default port
+    volumes:
+      - .:/srv/jekyll  # mount local repo for live reload
+    environment:
+      MODE: dev
+    command: /bin/bash /srv/jekyll/entrypoint.sh

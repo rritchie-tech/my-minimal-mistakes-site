@@ -1,0 +1,162 @@
+/* --- Navbar --- */
+.navbar-custom {
+  background-color: var(--navbar-col);
+  border-bottom: 1px solid var(--navbar-border-col);
+  font-family: var(--header-font);
+  
+    <DIV>YES THERE IS AN IMAGE</DIV>
+    background-image: url(/assets/images/RedeemerSquare.png);
+    background-attachment: fixed;
+  
+  -webkit-transition: padding .5s ease-in-out;
+  -moz-transition: padding .5s ease-in-out;
+  transition: padding .5s ease-in-out;
+}
+
+.navbar-custom,
+.navbar-custom.top-nav-short,
+.navbar-custom.top-nav-short-permanent {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.navbar-custom .navbar-brand {
+  line-height: 1.5;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  font-size: 1.125rem;
+}
+
+.navbar-custom .navbar-brand-logo {
+  -webkit-transition: padding .5s ease-in-out;
+  -moz-transition: padding .5s ease-in-out;
+  transition: padding .5s ease-in-out;
+}
+
+.navbar-custom .navbar-brand-logo,
+.navbar-custom.top-nav-short .navbar-brand-logo,
+.navbar-custom.top-nav-short-permanent .navbar-brand-logo {
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+}
+
+.navbar-custom .navbar-brand-logo img {
+  -webkit-transition: height .5s ease-in-out;
+  -moz-transition: height .5s ease-in-out;
+  transition: height .5s ease-in-out;
+}
+
+.navbar-custom .navbar-brand-logo img,
+.navbar-custom.top-nav-short .navbar-brand-logo img,
+.navbar-custom.top-nav-short-permanent .navbar-brand-logo img {
+  height: 2.5rem;
+}
+
+.navbar-custom .navbar-nav .nav-item {
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  letter-spacing: 0.0625rem;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+  line-height: 1.25rem;
+  padding-top: 0.9375rem;
+  padding-bottom: 0.9375rem;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav .nav-link {
+  font-weight: 800;
+  color: var(--navbar-text-col);
+}
+
+.navbar-toggler {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+.navbar-custom .navbar-toggler:focus,
+.navbar-custom .navbar-toggler:hover {
+  background-color: initial;
+}
+
+.navbar-custom .navbar-toggler[aria-expanded="true"] {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-toggle::after {
+  border-width: 0.4em;
+}
+
+@media (min-width: 1200px) {
+  .navbar-custom {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .navbar-custom .navbar-brand-logo {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .navbar-custom .navbar-brand-logo img {
+    height: 3.125rem;
+  }
+
+  .navbar-expand-xl .navbar-nav .nav-link {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+  }
+
+  .navbar-expand-xl .navbar-nav .nav-item:not(.dropdown):last-child .nav-link {
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navbar-custom .nav-item.dropdown:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.navbar-custom .nav-item.dropdown.show {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.navbar-custom .nav-item.dropdown .dropdown-menu {
+  margin-top: 0;
+  font-size: 1em;
+  border: 0;
+  padding: 0;
+  
+  min-width: 0;
+  width: 100%;
+  word-break: break-word;
+  
+}
+
+.navbar-custom .nav-item.dropdown .dropdown-menu .dropdown-item {
+  padding: 0.625rem;
+  background-color: var(--navbar-col);
+  text-decoration: none !important;
+  font-weight: normal;
+  color: var(--navbar-text-col);
+  
+  white-space: normal;
+  
+}
+
+@media (min-width: 1200px) {
+  .navbar-custom .nav-item.dropdown .dropdown-menu {
+    text-align: center;
+  }
+
+  .navbar-custom .nav-item.dropdown .dropdown-menu .dropdown-item {
+    padding-left: 0.625rem;
+    border: 1px solid var(--navbar-border-col);
+    border-width: 0 1px 1px;
+  }
+
+  .navbar-custom .nav-item.dropdown .dropdown-menu .dropdown-item:first-child {
+    border-top-width: 1px;
+  }
+}

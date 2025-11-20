@@ -6,7 +6,9 @@ RUN apt-get update && apt-get install -y \
     nodejs \
     npm \
     git \
+    bash \
  && rm -rf /var/lib/apt/lists/*
+
 
 RUN gem install jekyll bundler
 

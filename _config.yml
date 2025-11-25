@@ -15,6 +15,7 @@
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 favicon                  : "/assets/images/favicon.ico"
 large_logo               : "/assets/images/parament_lamb.gif"
+small_logo               : "/assets/images/RedeemerSquare_small.gif"
 # Site Settings
 title                    : "Redeemer Lutheran Church of HB"
 title_separator          : "-"
@@ -32,7 +33,7 @@ breadcrumbs              : # true, false (default)
 words_per_minute         : 200
 enable_copy_code_button  : # true, false (default)
 homebutton-js            : "assets/js/homebutton.js"
-other-css                : ["/assets/css/custom-styles.css", "/assets/css/navbar.css","/assets/css/calendar_widget.css"]
+other-css                : ["/assets/css/custom-styles.css", "/assets/css/rick-navbar.css","/assets/css/calendar_widget.css"]
 navbar-img               : "assets/images/RedeemerSquare.png"
 copyright                : # "copyright" name, defaults to site.title
 copyright_url            : # "copyright" URL, defaults to site.url
@@ -167,6 +168,8 @@ footer:
 include:
   - .htaccess
   - _pages
+  - admin
+
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"

@@ -2,8 +2,6 @@ backend:
   name: "github"
   repo: "rritchie-tech/my-minimal-mistakes-site"
   branch: "master"
-  base_url: "https://api.netlify.com"
-  site_id: "9d123cb4-da6c-4ad3-902e-12464e61939f"
   client_id: "${GITHUB_CLIENT_ID}"
   client_secret: "${GITHUB_CLIENT_SECRET}"
 
